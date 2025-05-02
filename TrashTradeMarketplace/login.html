@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <title>Login</title>
+    <
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="form-container login">
+            <form method="post" name="Login">
+                <h2>login</h2>
+                <div class="form-group">
+                    <input type="text" required>
+                    <i class="fa-solid fa-user"></i>
+                    <label for="">username</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" required>
+                    <i class="fa-solid fa-lock"></i>
+                    <label for="">password</label>
+                </div>
+                <div class="forgot-pass">
+                    <a href="#">forgot password?</a>
+                </div>
+                <button type="submit" class="btn">login</button>
+            </form>
+        </div>
+    </div>
+    <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwm7WpfglKphVFD8rMc2AKnc9xR4LhR2jO5ncTOu4j42MNb4YU4CwArf1degUuNQ4QtTw/exec'; // Keep your existing script URL
+    const form = document.forms['Login'];
+
+    // Add this CSS to your page
+    const style = document.createElement('style');
+    style.textContent = `
+        .loader {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 3px solid #3498db;
+            animation: spin 1s linear infinite;
+            margin: 10px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Add loader div after the button
+    const loginBtn = form.querySelector('.btn');
+    const loader = document.createElement('div');
+    loader.className = 'loader';
+    loginBtn.parentNode.insertBefore(loader, loginBtn.nextSibling);
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Show loader and disable button
+        loader.style.display = 'block';
+        loginBtn.disabled = true;
+        loginBtn.textContent = 'Logging in...';
+        
+        const username = form.querySelector('input[type="text"]').value;
+        const password = form.querySelector('input[type="password"]').value;
+
+        try {
+            const url = `${scriptURL}?action=checkLogin&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if (data.success) {
+                window.location.href = "m2.html";
+            } else {
+                alert('Invalid username or password. Please try again.');
+                // Reset button and hide loader
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'login';
+                loader.style.display = 'none';
+            }
+        } catch (error) {
+            console.error('Error details:', error);
+            alert('An error occurred during login. Please try again.');
+            // Reset button and hide loader
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'login';
+            loader.style.display = 'none';
+        }
+    });
+     </script>
+</body>
+</html>
