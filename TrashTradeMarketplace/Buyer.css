@@ -46,7 +46,6 @@
 }
 
 /* Hero Section */
-/* Hero Section with Background Video */
 .hero {
     position: relative;
     width: 100%;
@@ -124,18 +123,6 @@
 .btn:hover {
     opacity: 0.8;
     transform: scale(1.05);
-}
-
-/* How It Works Section */
-#how-it-works {
-    padding: 150px 20px;
-    background: #f4f4f4;
-    text-align: center;
-}
-
-#how-it-works h2 {
-    font-size: 2.8em;
-    margin-bottom: 20px;
 }
 
 .steps {
