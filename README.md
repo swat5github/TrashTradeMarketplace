@@ -1,4 +1,4 @@
-TrashTradeMarketplace
+Trash Trade Marketplace
 ♻️ Trash Trade Marketplace Trash Trade Marketplace is a web platform designed to revolutionize the way waste is managed by creating a sustainable, community-driven waste trading ecosystem. We bridge the gap between local waste providers—like households and small vendors—and companies seeking reusable materials for their production processes.
 
 🌍 About the Project Trash Trade Marketplace enables users to sell their recyclable and reusable waste easily through a clean, user-friendly interface. Vendors and local people can list items like plastic, metal, paper, and e-waste, which are then sorted, processed, and resold to industries and companies that require these materials for reuse or recycling.
