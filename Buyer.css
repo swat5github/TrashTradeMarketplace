@@ -1,0 +1,411 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e50;
+    padding: 35px 35px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+.nav-links a:hover {
+    color: #f39c12;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full screen height for a broader view */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    padding: 50px 20px;
+    overflow: hidden;
+}
+
+/* Background Video */
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers the full section */
+    z-index: -1;
+}
+
+/* Dark Overlay for Readability */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay for better contrast */
+    z-index: -1;
+}
+
+/* Hero Content */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.5em;
+    margin: 20px 0;
+}
+
+/* Buttons */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.paper { background: #e67e22; }
+.metal { background: #3498db; }
+.plastic { background: #27ae60; }
+
+.btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    gap: 40px;
+}
+
+.step {
+    background: white;
+    padding: 40px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.step:hover {
+    transform: scale(1.05);
+}
+
+/* About Us Section */
+#mission {
+    padding: 150px 20px;
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+#mission h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.mission {
+    max-width: 1390px;
+    margin: auto;
+    font-size: 1.4em;
+}
+
+/* Contact Section */
+#contact {
+    padding: 150px 20px;
+    background: #222;
+    color: white;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    max-width: 900px;
+    margin: auto;
+    font-size: 1.4em;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px;
+    background: #111;
+    color: white;
+    font-size: 1.2em;
+}
+/* Style for the globe container */
+#globe-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure content is above the globe */
+}
+/* Buy Sections */
+.buy-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    margin: 40px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buy-section:hover {
+    transform: translateY(-5px);
+    
+}
+
+.buy-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.buy-section p {
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Specific styles for each buy section */
+#buy-paper {
+    background: linear-gradient(135deg, #f9f9f9 0%, #e8f4f8 100%);
+    border-left: 5px solid #e67e22;
+}
+
+#buy-metal {
+    background: linear-gradient(135deg, #f9f9f9 0%, #e8f0f8 100%);
+    border-left: 5px solid #3498db;
+}
+
+#buy-plastic {
+    background: linear-gradient(135deg, #f9f9f9 0%, #e8f8ed 100%);
+    border-left: 5px solid #27ae60;
+}
+
+/* Add a call-to-action button to each buy section */
+.buy-section .cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #2c3e50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.buy-section .cta-button:hover {
+    background-color: #34495e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#contact {
+    padding: 150px 20px;
+    background: #222;
+    color: white;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: auto;
+}
+
+.contact input, .contact textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+}
+
+.contact button {
+    background: #f39c12;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.contact button:hover {
+    background: #e67e22;
+}
+
+.buy-section .features {
+    margin: 30px auto;
+    max-width: 600px;
+}
+
+.buy-section .features p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #2c3e50;
+}
+
+/* Action Choice Section */
+#action-choice {
+    padding: 20px 10px;
+    background: gray;
+    text-align: center;
+}
+
+#action-choice h2 {
+    font-size: 2.8em;
+    margin-bottom: 50px;
+    color: wheat;
+}
+
+.action-choice {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    gap: 30px;
+}
+
+.action-choice {
+    background: black;
+    padding: 80px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.action-choice:hover {
+    transform: scale(1.05);
+}
+
+.action-choice h3 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.action-choice p {
+    font-size: 1.2em;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Action Button */
+.action-buttons {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #2c3e50;
+    color: whitesmoke;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.action-buttons:hover {
+    background-color: #34495e;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific styles for action buttons */
+.btn-buy {
+    background-color: #27ae60; /* Green for buy */
+    color: white;
+}
+
+.btn-buy:hover {
+    background-color: #2ecc71;
+}
+
+.btn-sell {
+    background-color: #e74c3c; /* Red for sell */
+    color: white;
+}
+
+.btn-sell:hover {
+    background-color: #c0392b;
+}

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Management | Sell Your Waste</title>
+    <link rel="stylesheet" href="m2.css">
+    <script defer src="main.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <style>
+        /* Chatbot Button Styles */
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .chatbot-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+
+        /* Floating image container for buy waste */
+        .floating-images {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            z-index: 1000;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            text-align: center;
+            overflow-y: auto;
+            max-height: 70%;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+        }
+
+        .close-modal {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .image-container img {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            object-fit: cover;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">TrashTradeMarketplace</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#mission">Our Mission</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <video autoplay loop muted playsinline class="bg-video">
+            <source src="video/v1 (1).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Sell Your Waste, Earn Money!</h1>
+            <p>We buy Paper, Metal, and Plastic waste at the best prices.</p>
+            <div class="hero-buttons">
+                <a href="Chatbot.html" class="btn paper">📜 Sell Paper</a>
+                <a href="Chatbot.html" class="btn metal">🔩 Sell Metal</a>
+                <a href="Chatbot.html" class="btn plastic">♻ Sell Plastic</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Buy Options Section -->
+    <section id="buy-options" class="buy-options">
+        <!-- Buy Paper Section -->
+        <section id="buy-paper" class="buy-section">
+            <h2>Buy Paper</h2>
+            <p>We offer high-quality recycled paper for your business needs.</p>
+            <div class="features">
+                <p>✓ Eco-friendly materials</p>
+                <p>✓ Competitive pricing</p>
+            </div>
+            <a href="javascript:void(0)" class="cta-button" onclick="openImages('paper')">Buy Paper Waste</a>
+        </section>
+
+        <!-- Buy Metal Section -->
+        <section id="buy-metal" class="buy-section">
+            <h2>Buy Metal</h2>
+            <p>Our recycled metal products are perfect for manufacturing and construction.</p>
+            <div class="features">
+                <p>✓ Various metal types available</p>
+                <p>✓ Quality assured products</p>
+            </div>
+            <a href="javascript:void(0)" class="cta-button" onclick="openImages('metal')">Buy Metal Waste</a>
+        </section>
+
+        <!-- Buy Plastic Section -->
+        <section id="buy-plastic" class="buy-section">
+            <h2>Buy Plastic</h2>
+            <p>Explore our range of recycled plastic materials suitable for various applications.</p>
+            <div class="features">
+                <p>✓ Sustainable sourcing</p>
+                <p>✓ Wide variety of grades</p>
+            </div>
+            <a href="javascript:void(0)" class="cta-button" onclick="openImages('plastic')">Buy Plastic Waste</a>
+        </section>
+    </section>
+
+    <!-- Floating Image Modals -->
+    <div id="overlay" class="modal-overlay" onclick="closeModal()"></div>
+
+    <!-- Paper Waste Images -->
+    <div id="images-paper" class="floating-images">
+        <span class="close-modal" onclick="closeModal()">×</span>
+        <h3>Paper Waste</h3>
+        <div class="image-container">
+            <img src="images/paperwaste1.jpg" alt="Paper 1" onclick="navigateToContact()">
+            <img src="images/paperwaste2.jpg" alt="Paper 2" onclick="navigateToContact()">
+            <img src="images/paperwaste3.jpg" alt="Paper 3" onclick="navigateToContact()">
+            <img src="images/paperwaste4.jpg" alt="Paper 4" onclick="navigateToContact()">
+        </div>
+    </div>
+
+    <!-- Metal Waste Images -->
+    <div id="images-metal" class="floating-images">
+        <span class="close-modal" onclick="closeModal()">×</span>
+        <h3>Metal Waste</h3>
+        <div class="image-container">
+            <img src="images/metalwaste1.jpg" alt="Metal 1" onclick="navigateToContact()">
+            <img src="images/metalwaste2.jpg" alt="Metal 2" onclick="navigateToContact()">
+            <img src="images/metalwaste3.jpg" alt="Metal 3" onclick="navigateToContact()">
+            <img src="images/metalwaste4.jpg" alt="Metal 4" onclick="navigateToContact()">
+        </div>
+    </div>
+
+    <!-- Plastic Waste Images -->
+    <div id="images-plastic" class="floating-images">
+        <span class="close-modal" onclick="closeModal()">×</span>
+        <h3>Plastic Waste</h3>
+        <div class="image-container">
+            <img src="images/plasticwaste1.jpg" alt="Plastic 1" onclick="navigateToContact()">
+            <img src="images/plasticwaste2.jpg" alt="Plastic 2" onclick="navigateToContact()">
+            <img src="images/plasticwaste3.jpg" alt="Plastic 3" onclick="navigateToContact()">
+            <img src="images/plasticwaste4.jpg" alt="Plastic 4" onclick="navigateToContact()">
+        </div>
+    </div>
+
+    <section id="mission" class="mission">
+        <h2>Our Mission</h2>
+        <p>We are on a mission to make recycling easier and profitable for everyone. Sell your waste and contribute to a cleaner environment!</p>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    
+    <!-- Floating Modal Script -->
+    <script>
+        function openImages(type) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById(`images-${type}`).style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('overlay').style.display = 'none';
+            document.querySelectorAll('.floating-images').forEach(modal => {
+                modal.style.display = 'none';
+            });
+        }
+
+        function navigateToContact() {
+            closeModal();
+            window.location.href = 'QR.html';
+        }
+    </script>
+
+</body>
+</html>

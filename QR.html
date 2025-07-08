@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>QR Payment</title>
+  <style>
+    body {
+  margin: 0;
+  background-color: #f8f9fa;
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  text-align: center;
+  max-width: 600px;
+  margin: 50px auto; /* centers horizontally */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+    h1 {
+      color: #000000;
+      margin-top: 0cm;
+    }
+
+    .timer {
+      font-size: 2em;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+    #qr-code {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .button-container button {
+      flex-grow: 1;
+      margin: 0 5px;
+    }
+
+    .instructions {
+      color: #6c757d;
+      margin-bottom: 30px;
+    }
+    header {
+  height: 100%;
+  text-align: center;
+   }
+  #ttm {
+  margin: 20px 0 0 0;
+  color: #000000;
+    }
+
+    #img {
+      max-height: 200px;
+      max-width: 200px;
+    }
+  </style>
+</head>
+
+<body>
+ <header>
+  <h1 id="ttm">Trash Trade Marketplace</h1>
+</header>
+<div class="container">
+  <h1>QR Payment</h1>
+  <div class="timer" id="timer">05:00</div>
+  <img id="img" src="images/QRimg.jpg" alt="QR code">
+  <div><p>UPI I'd : swatejsingh91@oksbi</p></div>
+  <div class="button-container">
+    <button onclick="cancelPayment()">Cancel</button>
+    <button onclick="resetTimer()">ResetTimer</button>
+  </div>
+
+  <p class="instructions">Please scan QR code with your mobile by using Mobile Banking Application.</p>
+</div>
+
+<script>
+  let timer = 300;
+
+  function updateTimer() {
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+    document.getElementById('timer').innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  }
+  
+  function cancelPayment() {
+  window.location.href = "m2.html"; 
+}
+
+  function resetTimer() {
+    timer = 300; 
+    updateTimer();
+  }
+
+  updateTimer();
+
+  setInterval(function () {
+    if (timer > 0) {
+      timer--;
+      updateTimer();
+    }
+  }, 1000);
+</script>
+
+</body>
+</html>

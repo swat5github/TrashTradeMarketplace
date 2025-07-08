@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+  <div class="wrapper">
+   <div class="form-container register">
+    <form method="post" name="Register">
+        <h2>Register</h2>
+        <div class="form-group">
+            <input type="text" name="username" required>
+            <img src="icons/user-solid.svg" alt="User Icon" class="form-icon">
+            <label for="">username</label>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" required>
+            <img src="icons/lock-solid.svg" alt="Lock Icon" class="form-icon">
+            <label for="">password</label>
+        </div>
+        <div class="form-group">
+            <input type="password" name="confirm-password" required>
+            <img src="icons/lock-solid.svg" alt="Lock Icon" class="form-icon">
+            <label for="">confirm password</label>
+        </div>
+        <div class="form-group">
+            <input type="email" name="email" required>
+            <img src="icons/envelope-solid.svg" alt="Email Icon" class="form-icon">
+            <label for="">email</label>
+        </div>
+        <button type="submit" class="btn">Register</button>
+    </form>
+ </div>
+</div>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwm7WpfglKphVFD8rMc2AKnc9xR4LhR2jO5ncTOu4j42MNb4YU4CwArf1degUuNQ4QtTw/exec';
+    const form = document.forms['Register'];
+
+    form.addEventListener('submit', e => {
+        e.preventDefault(); // Prevent the form from submitting normally
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            .then(response => {
+                window.location.href = "m2.html";
+            })
+            .catch(error => console.error('Error!', error.message));
+    });
+</script>
+</body>
+</html>

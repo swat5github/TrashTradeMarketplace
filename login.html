@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+    <
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="form-container login">
+            <form method="post" name="Login">
+                <h2>login</h2>
+                <div class="form-group">
+                    <input type="text" required>
+                    <img src="icons/user-solid.svg" alt="User Icon" class="form-icon">
+                    <label for="">username</label>
+                </div>
+                <div class="form-group">
+                    <input type="password" required>
+                    <img src="icons/lock-solid.svg" alt="Lock Icon" class="form-icon">
+                    <label for="">password</label>
+                </div>
+                <div class="forgot-pass">
+                    <a href="#">forgot password?</a>
+                </div>
+                <button type="submit" class="btn">login</button>
+            </form>
+        </div>
+    </div>
+    <script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwm7WpfglKphVFD8rMc2AKnc9xR4LhR2jO5ncTOu4j42MNb4YU4CwArf1degUuNQ4QtTw/exec';
+const form = document.forms['Login'];
+
+// Add CSS dynamically for loader
+const style = document.createElement('style');
+style.textContent = `
+    .loader {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 3px solid #3498db;
+        animation: spin 1s linear infinite;
+        margin: 10px auto;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    .btn:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+`;
+document.head.appendChild(style);
+
+// Loader creation
+const loginBtn = form.querySelector('.btn');
+const loader = document.createElement('div');
+loader.className = 'loader';
+loginBtn.parentNode.insertBefore(loader, loginBtn.nextSibling);
+
+// Utility: Reset button and loader
+function resetUI() {
+    loginBtn.disabled = false;
+    loginBtn.textContent = 'login';
+    loader.style.display = 'none';
+}
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = form.querySelector('input[type="text"]').value.trim();
+    const password = form.querySelector('input[type="password"]').value.trim();
+
+    // Input validation
+    if (!username || !password) {
+        alert('Please enter both username and password.');
+        return;
+    }
+
+    // UI loading state
+    loader.style.display = 'block';
+    loginBtn.disabled = true;
+    loginBtn.textContent = 'Logging in...';
+
+    try {
+        const url = `${scriptURL}?action=checkLogin&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
+        const response = await fetch(url);
+        const data = await response.json();
+
+        // Logging for analytics
+        console.log(`Login attempt: ${username} – ${data.success ? "SUCCESS" : "FAILED"}`);
+
+        if (data.success) {
+    window.location.href = `m2.html?user=${encodeURIComponent(username)}`; // pass username via URL
+    } else {
+    alert('Invalid username or password. Please try again.');
+    resetUI();
+}
+
+    } catch (error) {
+        console.error('Login error:', error);
+        alert('An error occurred while connecting to the server. Please check your internet connection or try again later.');
+        resetUI();
+    }
+});
+</script>
+</body>
+</html>
