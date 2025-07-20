@@ -223,29 +223,25 @@
     margin-bottom: 20px;
 }
 
-.contact form {
+.contact-info {
     max-width: 600px;
     margin: auto;
+    background: #333;
+    padding: 20px;
+    border-radius: 5px;
 }
 
-.contact input, .contact textarea {
-    width: 100%;
+.contact-info p {
+    background: #444;
     padding: 15px;
     margin: 10px 0;
-    border: none;
     border-radius: 5px;
 }
 
-.contact button {
-    background: #f39c12;
-    color: white;
-    padding: 15px 20px;
-    border: none;
-    font-size: 1.2em;
-    cursor: pointer;
-    border-radius: 5px;
+.contact-info p strong {
+    color: #f39c12;
 }
 
-.contact button:hover {
-    background: #e67e22;
+.contact-info p:hover {
+    background: #555;
 }
