@@ -43,7 +43,7 @@
         e.preventDefault(); // Prevent the form from submitting normally
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
             .then(response => {
-                window.location.href = "QR.html";
+                window.location.href = "Buyer.html";
             })
             .catch(error => console.error('Error!', error.message));
     });
