@@ -99,7 +99,7 @@ form.addEventListener('submit', async (e) => {
         console.log(`Login attempt: ${username} – ${data.success ? "SUCCESS" : "FAILED"}`);
 
         if (data.success) {
-    window.location.href = `m2.html?user=${encodeURIComponent(username)}`; // pass username via URL
+    window.location.href = `Buyer.html?user=${encodeURIComponent(username)}`; // pass username via URL
     } else {
     alert('Invalid username or password. Please try again.');
     resetUI();
