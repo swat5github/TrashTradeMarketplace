@@ -179,9 +179,26 @@
 }
 
 .contact-info {
-    max-width: 900px;
+    max-width: 600px;
     margin: auto;
-    font-size: 1.4em;
+    background: #333;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.contact-info p {
+    background: #444;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.contact-info p strong {
+    color: #f39c12;
+}
+
+.contact-info p:hover {
+    background: #555;
 }
 
 /* Footer */
