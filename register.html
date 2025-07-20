@@ -40,12 +40,30 @@
     const form = document.forms['Register'];
 
     form.addEventListener('submit', e => {
-        e.preventDefault(); // Prevent the form from submitting normally
+        e.preventDefault(); // Prevent default form submission
+
+        // Get UI elements (safely)
+        const loginBtn = form.querySelector('button'); // assumes there's only one button
+        const loader = document.createElement('div');
+        loader.className = 'loader';
+        form.appendChild(loader); // or insert next to button
+
+        // Show loading state
+        loader.style.display = 'block';
+        loginBtn.disabled = true;
+        loginBtn.textContent = 'Registering...';
+
+        // Submit to Google Script
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
             .then(response => {
                 window.location.href = "Buyer.html";
             })
-            .catch(error => console.error('Error!', error.message));
+            .catch(error => {
+                console.error('Error!', error.message);
+                loginBtn.disabled = false;
+                loginBtn.textContent = 'Register';
+                loader.style.display = 'none';
+            });
     });
 </script>
 </body>
